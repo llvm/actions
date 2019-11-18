@@ -1,0 +1,12 @@
+name: 'Setup Windows'
+description: >
+        Setup Windows environment for building and running tests.  This
+        modifies the global git configuration, so it needs to be run before
+        checking out sources.
+inputs:
+  arch:
+    description: 'Host Arch'
+    required: true
+runs:
+  using: 'node12'
+  main: main.js

@@ -1,0 +1,14 @@
+name: 'Build and Test LLVM Project'
+description: 'Configure, Build, and Test LLVM'
+inputs:
+  cmake_args:
+    description: 'CMake Arguments'
+    required: false
+  os:
+    description: 'Host OS'
+    required: false
+    default: ${{ runner.os }}
+
+runs:
+  using: 'node12'
+  main: 'main.js'

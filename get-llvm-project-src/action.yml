@@ -1,0 +1,10 @@
+name: 'Get LLVM source'
+description: 'Download and unpack LLVM sources'
+inputs:
+  ref:
+    description: 'Git ref of source to fetch.  Defaults to GITHUB_SHA'
+    required: false
+
+runs:
+  using: 'node12'
+  main: 'main.js'
