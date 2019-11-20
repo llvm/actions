@@ -2,8 +2,13 @@ name: 'Get LLVM source'
 description: 'Download and unpack LLVM sources'
 inputs:
   ref:
-    description: 'Git ref of source to fetch.  Defaults to GITHUB_SHA'
+    description: 'Git ref of source to fetch.  This can also be a tag.  Defaults to GITHUB_SHA'
     required: false
+    default: ${{ env.GTIHUB_SHA }}
+  repo:
+    description: 'The repo to fetch code from. e.g. llvm/llvm-project Defaults to GITHUB_REPOSITORY'
+    required: false
+    default: ${{ env.GITHUB_REPOSITORY }}
 
 runs:
   using: 'node12'
