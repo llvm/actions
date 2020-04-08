@@ -8,6 +8,10 @@ inputs:
     description: 'Host OS'
     required: false
     default: ${{ runner.os }}
+  build_target:
+    description: 'Ninja build target'
+    required: false
+    default: 'check-all'
 
 runs:
   using: 'node12'

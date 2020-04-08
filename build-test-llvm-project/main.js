@@ -55,6 +55,7 @@ if (process.argv.length != 2) {
 }
 
 var os = process.env.INPUT_OS.toLowerCase();
+var build_target = process.env.INPUT_BUILD_TARGET;
 
 user_cmake_args = process.env.INPUT_CMAKE_ARGS;
 process.env.INPUT_CMAKE_ARGS = "../llvm ";
@@ -70,7 +71,7 @@ p.on('exit', (code, signal) => {
   if (code || signal) {
     handle_errors(code, signal);
   }
-  p = run_command_async('ninja -v check-all');
+  p = run_command_async('ninja -v ' + build_target);
   p.on('exit', (code, signal) => {
     handle_errors(code, signal);
   });
