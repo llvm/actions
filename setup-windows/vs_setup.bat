@@ -7,7 +7,7 @@ for /f "usebackq tokens=*" %%i in (`"%ProgramFiles(x86)%\Microsoft Visual Studio
 )
 
 :: Setup environment
-call "%InstallDir%\Common7\Tools\vsdevcmd.bat" %*
+call "%InstallDir%\Common7\Tools\vsdevcmd.bat" %* > nul 2>&1
 
 :: Echo all env vars as github runner commands, so they persist for subsequent steps.
 for /f "tokens=1,2 delims==" %%a in ('set') do (
