@@ -11,5 +11,5 @@ call "%InstallDir%\Common7\Tools\vsdevcmd.bat" %*
 
 :: Echo all env vars as github runner commands, so they persist for subsequent steps.
 for /f "tokens=1,2 delims==" %%a in ('set') do (
-  echo ::set-env name=%%a::%%b
+  echo %%a=%%b
 )

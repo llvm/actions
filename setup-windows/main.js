@@ -21,10 +21,16 @@ exec(cmd, (error, stdout, stderr) => {
 console.log(`${script}`)
 exec(`${script} -arch=${arch}`, (error, stdout, stderr) => {
 
-  console.log(`${stdout}`);
   console.error(`${stderr}`);
   if (error) {
     process.exit(error);
   }
+
+  var fs = require('fs');
+  fs.appendFile(process.env.GITHUB_ENV, `${stdout}`, function (err) {
+    if (err) throw err;
+    console.log('Wrote environment variables to file:');
+    console.log(`${stdout}`);
+  });
 });
 
