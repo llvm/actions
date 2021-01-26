@@ -11,7 +11,7 @@ jobs:
       - name: Get LLVM source
         uses: llvm/actions/get-llvm-project-src@master
         with:
-          ref: 'main'
+          ref: 'llvmorg-11.0.0'
           repo: 'https://github.com/llvm/llvm-project'
       - name: Get LLVM Version
         id: version
