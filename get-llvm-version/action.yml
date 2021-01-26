@@ -1,0 +1,19 @@
+name: 'Get LLVM Version'
+description: 'Get LLVM version information from the project source'
+inputs:
+  srcdir:
+    description: 'LLVM source directory'
+    required: false
+    default: '.'
+
+outputs:
+  LLVM_VERSION_MAJOR:
+    description: 'LLVM major version'
+  LLVM_VERSION_MINOR:
+    description: 'LLVM minor version'
+  LLVM_VERSION_PATCH:
+    description: 'LLVM patch version'
+
+runs:
+  using: 'node12'
+  main: 'main.js'

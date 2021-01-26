@@ -1,0 +1,22 @@
+name: Get Version test
+
+on:
+  push:
+
+jobs:
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get LLVM source
+        uses: llvm/actions/get-llvm-project-src@master
+        with:
+          ref: 'main'
+          repo: 'https://github.com/llvm/llvm-project'
+      - name: Get LLVM Version
+        id: version
+        uses: ./get-llvm-version
+      - name: Print output variables
+        run: |
+          echo "${steps.version.outputs.LLVM_VERSION_MAJOR}.${steps.version.outputs.LLVM_VERSION_MINOR}.${steps.version.outputs.LLVM_VERSION_PATCH}"
+
