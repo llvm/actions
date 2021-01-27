@@ -15,6 +15,10 @@ jobs:
         with:
           ref: 'llvmorg-11.0.0'
           repo: 'llvm/llvm-project'
+      - name: Debug
+        run: |
+          ls
+        
       - name: Get LLVM Version
         id: version
         uses: ./get-llvm-version
