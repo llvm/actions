@@ -7,5 +7,5 @@ exec(cmd, (error, stdout, stderr) => {
   stdout.split("\n").forEach(function(line) {
     data = line.split(" ");
     core.setOutput(data[0], data[1]);
-  });
-}
+  })
+});
