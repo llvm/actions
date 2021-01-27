@@ -6,12 +6,12 @@ module.exports =
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __nccwpck_require__) => {
 
 const core = __nccwpck_require__(186);
-const { exec } = __nccwpck_require__(129);
+const { execSync } = __nccwpck_require__(129);
 const srcdir = core.getInput('srcdir');
 const cmd = "grep -o 'LLVM_VERSION_\(MAJOR\|MINOR\|PATCH\) [0-9]\+'" + srcdir + "/llvm/CMakeLists.txt"
 
 console.log(cmd);
-exec(cmd, (error, stdout, stderr) => {
+execSync(cmd, (error, stdout, stderr) => {
   console.log(`stdout: ${stdout}`);
   console.error(`stderr: ${stderr}`);
   if (error) {
