@@ -8,6 +8,8 @@ jobs:
     name: test
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout Actions
+        uses: actions/checkout@v1
       - name: Get LLVM source
         uses: llvm/actions/get-llvm-project-src@master
         with:
