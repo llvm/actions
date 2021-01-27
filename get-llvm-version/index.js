@@ -1,7 +1,7 @@
 const core = require('@actions/core');
 const { execSync } = require('child_process');
 const srcdir = core.getInput('srcdir');
-const cmd = "grep -o 'LLVM_VERSION_\(MAJOR\|MINOR\|PATCH\) [0-9]\+' " + srcdir + "/llvm/CMakeLists.txt"
+const cmd = "grep -o 'LLVM_VERSION_\\(MAJOR\\|MINOR\\|PATCH\\) [0-9]\+' " + srcdir + "/llvm/CMakeLists.txt"
 
 console.log(cmd);
 execSync(cmd, (error, stdout, stderr) => {
