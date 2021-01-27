@@ -1,5 +1,5 @@
 const core = require('@actions/core');
-const exec = require('child_process');
+const { exec } = require('child_process');
 const srcdir = core.getInput('srcdir');
 const cmd = "grep -o 'LLVM_VERSION_\(MAJOR\|MINOR\|PATCH\) [0-9]\+'" + srcdir + "/llvm/CMakeLists.txt"
 
