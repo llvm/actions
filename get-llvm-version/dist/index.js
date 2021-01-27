@@ -8,7 +8,7 @@ module.exports =
 const core = __nccwpck_require__(186);
 const { execSync } = __nccwpck_require__(129);
 const srcdir = core.getInput('srcdir');
-const cmd = "grep -o 'LLVM_VERSION_\(MAJOR\|MINOR\|PATCH\) [0-9]\+'" + srcdir + "/llvm/CMakeLists.txt"
+const cmd = "grep -o 'LLVM_VERSION_\(MAJOR\|MINOR\|PATCH\) [0-9]\+' " + srcdir + "/llvm/CMakeLists.txt"
 
 console.log(cmd);
 execSync(cmd, (error, stdout, stderr) => {
