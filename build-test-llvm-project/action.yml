@@ -14,5 +14,5 @@ inputs:
     default: 'check-all'
 
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'main.js'
