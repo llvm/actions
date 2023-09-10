@@ -95,15 +95,28 @@ async function run() {
   if (includeTitle === 1) issueContent += `${issue_title}\n\n`;
   if (includeBody === 1) issueContent += issue_body;
 
-  for (const [label, globs] of labelRegexes.entries()) {
-    if (checkRegexes(issueContent, globs)) {
-      toAdd.push(label);
-    } else if (syncLabels === 1) {
-      if (labels.includes(label)) {
-        debug(`Marking #${label} label for removal`);
-        toRemove.push(label);
+  // LLVM: we only want to add labels if none has done so manually yet
+  if (labels.length == 0) {
+    // LLVM: First add the sub category labels
+    for (const [label, globs] of labelRegexes.entries()) {
+      if (label.indexOf(":")) {
+        if (checkRegexes(issueContent, globs))
+          toAdd.push(label);
       }
     }
+
+    // Add labels not already matching a sub category
+    for (const [label, globs] of labelRegexes.entries()) {
+      if (!label.indexOf(":") && !toAdd.find( x => x.startsWith(label + ":"))) {
+        if (checkRegexes(issueContent, globs))
+            toAdd.push(label);
+      }
+    }
+
+    // LLVM: If no label is added, add 'new issue' to indicate the issue needs
+    // manual triage
+    if(toAdd.length == 0)
+      toAdd.push('new issue');
   }
 
   let promises = [];
