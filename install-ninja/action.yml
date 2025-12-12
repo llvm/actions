@@ -1,0 +1,10 @@
+name: 'Install Ninja'
+description: 'Install ninja'
+inputs:
+  os:
+    description: 'Host OS'
+    required: false
+    default: ${{ runner.os }}
+runs:
+  using: 'node20'
+  main: 'main.js'
